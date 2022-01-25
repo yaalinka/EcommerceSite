@@ -1,0 +1,28 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-6">
+        <a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Back To Store</a>
+        <img class="thumbnail product-img" src="{{product.imageURL}}">
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element" style="height: 95%; margin-top: 5%; padding: 5%">
+            <h3 style="border-bottom: 1px solid gray; padding-bottom: 4px;">{{ product.name }}</h3>
+            <br>
+            {% if product.characteristics %}
+            <p><strong>Characteristics: </strong>{{ product.characteristics }}</p>
+            {% else %}
+            <p><strong>Characteristics: </strong>&#8212;</p>
+            {% endif %}
+            {% if product.digital %}
+            <p><strong>Digital: </strong>Yes (don't need shipping).</p>
+            {% else %}
+            <p><strong>Digital: </strong>No (need shipping).</p>
+            {% endif %}
+            <p><strong>Price: </strong>${{ product.price }}.</p>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
